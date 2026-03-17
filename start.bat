@@ -17,18 +17,18 @@ echo ===============================
 echo        CHAT ghosthszz_
 echo ===============================
 echo.
-echo 1 - Conectar ao server principal
+echo 1 - Iniciar app
 echo 2 - Mudar porta local
-echo 3 - Iniciar app
+echo 3 - Conectar ao server principal
 echo 4 - Instalar Node.js e dependencias
 echo 0 - Sair
 echo.
 
 set /p opcao=Escolha uma opcao: 
 
-if "%opcao%"=="1" goto server
+if "%opcao%"=="3" goto server
 if "%opcao%"=="2" goto local
-if "%opcao%"=="3" goto start
+if "%opcao%"=="1" goto start
 if "%opcao%"=="4" goto installall
 if "%opcao%"=="0" exit
 goto menu
@@ -100,6 +100,52 @@ echo Node.js encontrado!
 echo.
 
 cd /d "%~dp0"
+
+echo Instalando dependencias...
+npm install
+
+echo.
+echo Instalacao concluida com sucesso!
+pause
+goto menu
+
+
+:start
+echo.
+
+REM Verifica se Node.js esta instalado
+node -v >nul 2>&1
+if errorlevel 1 (
+    echo =====================================
+    echo ERRO: Node.js nao esta instalado.
+    echo.
+    echo Use a opcao 4 para instalar automaticamente.
+    echo =====================================
+    pause
+    goto menu
+)
+
+echo Node.js encontrado!
+echo.
+echo Iniciando aplicacao...
+
+cd /d "%~dp0"
+
+REM Extrai porta correta do server.js
+for /f "tokens=6 delims= " %%a in ('findstr "process.env.PORT" "%SERVER_PATH%"') do set PORTA=%%a
+set PORTA=%PORTA:;=%
+
+echo Porta detectada: %PORTA%
+
+cd backend/src
+
+start "" /min cmd /k node server.js
+
+timeout /t 2 >nul
+
+start chrome http://localhost:%PORTA%
+
+exitcd /d "%~dp0"
 
 echo Instalando dependencias...
 npm install
