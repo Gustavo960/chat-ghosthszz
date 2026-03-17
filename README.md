@@ -11,9 +11,9 @@ Este projeto é um  chat composto por envios de anexos, mensagens, e outras func
   
 ## - Jump scare: Essa funcionalidade serve para brincar entre amigos, ela deve assuatar eles usando um comando especifico!.
   
-## - Comandos "jumps": Os comandos jumps por enquanto é apenas 1 (!cp), ele exibe PARA TODO os clientes conectados uma foto da bonnie de five nights at freedy.
+## - Comandos "jumps": Os comandos jumps por enquanto é apenas 1 "!cp", ele exibe PARA TODOS os clientes conectados uma foto da bonnie de five nights at freedy.
   
-## - Comando secreto: O chat contem um comando secreto que exibe um modal com iframe, serve para mostrar a todos um video/musica do YouTube.
+## - Comando secreto: O chat contem um comando secreto "!iframe" que exibe um modal com iframe, serve para mostrar a todos um video/musica do YouTube. 
   
 # 🔗 Teste agora
 
@@ -49,6 +49,6 @@ Ou clicle em "CODE" e baixe como zip.
    ```bash
    Execute start.bat
 
-### E selecione a opção "1"
+### E selecione a opção "3"
 
 
